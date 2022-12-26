@@ -13,6 +13,6 @@ jobs:
           ls
           apk update
           apk add --no-cache mysql-client mariadb-connector-c-dev postgresql-client sqlite-libs
-          zef install --/test DBIish App::Prove6
+          zef install --force --/test DBIish App::Prove6
       - name: Run tests
         run: prove6

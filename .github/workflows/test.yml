@@ -1,0 +1,17 @@
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: rakudo-star:alpine
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          ls
+          apk add --no-cache mysql-client mariadb-connector-c-dev postgresql-client sqlite-libs
+          zef install --/test DBIish App::Prove6
+      - name: Run tests
+        run: raku t/01.rakutest

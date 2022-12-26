@@ -11,7 +11,8 @@ jobs:
       - name: Install dependencies
         run: |
           ls
+          apk update
           apk add --no-cache mysql-client mariadb-connector-c-dev postgresql-client sqlite-libs
           zef install --/test DBIish App::Prove6
       - name: Run tests
-        run: raku t/01.rakutest
+        run: prove6
